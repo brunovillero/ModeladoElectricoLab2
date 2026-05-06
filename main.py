@@ -25,16 +25,16 @@ cargas, medidas,listamed = gr.iniciar(L)
 #gr.AgregarMedidaDePotencial(listamed,1,1)
 
 #Parte B.1
-gr.agregarCarga(cargas,Q/2,0,0)
-gr.agregarCarga(cargas,Q/2,0,L*2)
+#gr.agregarCarga(cargas,Q/2,0,0)
+#gr.agregarCarga(cargas,Q/2,0,L*2)
 #Medidas de campo electrico
-gr.agregarMedidaDeCampo(medidas,L/4,0)
+#gr.agregarMedidaDeCampo(medidas,L/4,0)
 #gr.agregarMedidaDeCampo(medidas,L/4,L/8)
 #gr.agregarMedidaDeCampo(medidas,L,0)
 #gr.agregarMedidaDeCampo(medidas,L/4,-L/8)
 #gr.agregarMedidaDeCampo(medidas,L/2,0)
 #Medidas de potencial
-gr.AgregarMedidaDePotencial(listamed,L/4,0)
+#gr.AgregarMedidaDePotencial(listamed,L/4,0)
 #gr.AgregarMedidaDePotencial(listamed,L/4,L/8)
 #gr.AgregarMedidaDePotencial(listamed,L,0)
 #gr.AgregarMedidaDePotencial(listamed,L/4,-L/8)
@@ -77,6 +77,21 @@ gr.AgregarMedidaDePotencial(listamed,L/4,0)
 #gr.AgregarMedidaDePotencial(listamed,L/4,-L/8)
 #gr.AgregarMedidaDePotencial(listamed,L/2,0)
 
+
+# --- Ejercicio Entregable ---
+Q1 = -15 * 1e-6
+Q2 = 5 * 1e-6
+Q3 = 5 * 1e-6
+
+gr.agregarCarga(cargas, Q1, -2, -2)
+gr.agregarCarga(cargas, Q2, -2, 2)
+gr.agregarCarga(cargas, Q3, 2, -2)
+
+# Potencial y Campo en origen (0,0) y en (2,2)
+#gr.AgregarMedidaDePotencial(listamed, 0, 0)
+gr.AgregarMedidaDePotencial(listamed, 2, 2)
+#gr.agregarMedidaDeCampo(medidas, 0, 0)
+gr.agregarMedidaDeCampo(medidas, 2, 2)
 
 #Mostrar el resultado
 gr.mostrar(cargas, medidas,listamed)
