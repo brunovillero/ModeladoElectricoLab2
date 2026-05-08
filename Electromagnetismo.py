@@ -1,5 +1,4 @@
 k = 8987551788
-E0 = 8.85e-12
 from numpy import linalg, sqrt, pi, array
 
 class cargaPuntual:
@@ -8,24 +7,20 @@ class cargaPuntual:
         self.q, self.r = q, array(r)
         
     def campo(self, r):
-        # 1. Calculamos el vector distancia (r_evaluacion - r_carga)
-        vector_distancia = array(r) - self.r
-        
-        # 2. Calculamos la distancia total (magnitud del vector)
-        distanciaT = linalg.norm(vector_distancia)
-        
-        # 3. Evitamos la división por cero si el punto evaluado es exactamente la posición de la carga
-        if distanciaT == 0:
-            print("El campo en la posición exacta de la carga tiende al infinito.")
-            return array([0.0, 0.0])
-            
-        # 4. Calculamos el campo eléctrico vectorial
-        # Usamos k directamente como en el potencial, o bien (1/(4*pi*E0))
-        # Multiplicamos por vector_distancia y dividimos por distanciaT al cubo
-        campoElectrico = (k * self.q / (distanciaT**3)) * vector_distancia
-        
-        print(f"Campo electrico de carga en {self.r} hacia punto {r}:", campoElectrico)
-        return campoElectrico
+      #r = array(r)
+      diff = r - self.r
+      distancia = linalg.norm(diff)
+    
+      if distancia == 0:
+        return array([0.0, 0.0])
+    
+      mod_campo_elec = k * (self.q / distancia**2)
+      u = diff / distancia
+      
+      campo_vectorial = mod_campo_elec * u
+    
+      print(f"Campo eléctrico en {r}: {campo_vectorial}")
+      return campo_vectorial
         
     def potencial(self, r):  
         distanciaT = linalg.norm(self.r - r)
